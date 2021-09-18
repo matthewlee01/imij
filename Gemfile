@@ -19,6 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Google Cloud Storage 
 gem 'google-cloud-storage', '~> 1.11', require: false
+# dotenv
+gem 'dotenv-rails', '~> 2.7'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
