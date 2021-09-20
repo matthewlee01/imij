@@ -17,9 +17,15 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: ""
-  credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-  bucket: ""
+  project: imij-326416
+  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  bucket: imij-bucket
+
+google_dev:
+  service: GCS
+  project: imij-326416
+  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  bucket: imij-bucket
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
@@ -32,3 +38,4 @@ google:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
