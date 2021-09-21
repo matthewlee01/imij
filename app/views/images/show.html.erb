@@ -5,8 +5,12 @@
 </div>
 
 <p>
-  <strong>Description:</strong>
+  <strong>description:</strong>
   <%= @image.description %>
+</p>
+<p>
+  <strong>uploaded by:</strong>
+  <%= @username %>
 </p>
 
 <% if @image.user == current_user %>

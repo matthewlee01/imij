@@ -5,11 +5,16 @@ class ImagesController < ApplicationController
 
   # GET /images or /images.json
   def index
-    @images = Image.all
+    @images = Image.where(public: true)
+    if (current_user)
+      @images = @images + Image.where(user_id: current_user.id)
+    end
+
   end
 
   # GET /images/1 or /images/1.json
   def show
+    @username = User.find(@image.user_id).email 
   end
 
   # GET /images/new
