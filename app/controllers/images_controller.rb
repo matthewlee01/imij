@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /images or /images.json
   def index
@@ -12,7 +14,7 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = Image.new
+    @image = current_user.images.build
   end
 
   # GET /images/1/edit
@@ -21,7 +23,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.build(image_params)
 
     respond_to do |format|
       if @image.save
@@ -56,6 +58,11 @@ class ImagesController < ApplicationController
     end
   end
 
+  def correct_user
+    @image = current_user.images.find_by(id: params[:id])
+    redirect_to images_path, notice: "403: unauthorized" if @image.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
@@ -66,4 +73,6 @@ class ImagesController < ApplicationController
     def image_params
       params.require(:image).permit(:user_id, :description, :public, :image_file)
     end
+
+
 end

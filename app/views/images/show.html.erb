@@ -9,5 +9,8 @@
   <%= @image.description %>
 </p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<% if @image.user == current_user %>
+  <%= link_to 'Edit', edit_image_path(@image) %> |
+  <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', images_path %>
