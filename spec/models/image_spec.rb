@@ -15,21 +15,18 @@ RSpec.describe Image, :type => :model do
 			filename: 'test.png',
 			content_type: 'image/png')
 	}
-	it "is valid with valid attributes" do 
-		expect(subject).to be_valid
+
+	describe "validations" do
+		it { should validate_presence_of(:user_id) }
+		it { should validate_presence_of(:image_file) }
+		it { should validate_presence_of(:public) }
+
+		it "properly attaches a file" do 
+			expect(subject.image_file).to be_attached
+		end
 	end
 
-	it "is not valid without an image_file" do
-		subject.image_file = nil
-		expect(subject).to_not be_valid
-	end
-
-	it "is not valid without a user_id" do 
-		subject.user_id = nil
-		expect(subject).to_not be_valid
-	end
-
-	it "properly attaches a file" do 
-		expect(subject.image_file).to be_attached
+	describe "associations" do
+		it { should belong_to(:user) }
 	end
 end
