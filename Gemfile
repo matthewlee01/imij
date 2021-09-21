@@ -52,7 +52,7 @@ end
 
 group :production do
   # Use postgres as the database for production
-  gem 'pg', '~> 0.18.4'
+  gem 'pg'
 end
 
 group :test do
