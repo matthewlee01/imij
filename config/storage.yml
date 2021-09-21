@@ -17,14 +17,14 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: imij-326416
-  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  project: imij
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
   bucket: imij-bucket
 
 google_dev:
   service: GCS
-  project: imij-326416
-  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  project: imij
+  credentials: <%= Rails.root.join("config/imij-keyfile.json") %>
   bucket: imij-bucket
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
