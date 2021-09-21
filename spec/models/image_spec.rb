@@ -19,7 +19,7 @@ RSpec.describe Image, :type => :model do
 	describe "validations" do
 		it { should validate_presence_of(:user_id) }
 		it { should validate_presence_of(:image_file) }
-		it { should validate_presence_of(:public) }
+		it { should validate_inclusion_of(:public).in_array([true, false]) }
 
 		it "properly attaches a file" do 
 			expect(subject.image_file).to be_attached
@@ -29,4 +29,5 @@ RSpec.describe Image, :type => :model do
 	describe "associations" do
 		it { should belong_to(:user) }
 	end
+
 end

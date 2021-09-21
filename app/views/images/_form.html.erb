@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.label :image_file %>
+    <%= form.file_field :image_file %>
   </div>
 
   <div class="field">
@@ -22,8 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :image_file %>
-    <%= form.file_field :image_file %>
+    <%= form.label :public %>
+    <%= form.check_box :public, value: false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :image_user_id, type: :hidden, value: current_user.id %>
   </div>
 
   <div class="actions">
