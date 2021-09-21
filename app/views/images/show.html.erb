@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag(@image.image_file) if @image.image_file.attached? %>
-</p>
+<div class="text-center container-fluid">
+  <%= image_tag @image.image_file, class:"img-fluid" %>
+</div>
 
 <p>
   <strong>Description:</strong>
