@@ -6,9 +6,9 @@ class ImagesController < ApplicationController
   # GET /images or /images.json
   def index
     if (current_user)
-      @images = Image.where(user_id: current_user.id).or(Image.where(public: true))
+      @images = Image.where(user_id: current_user.id).or(Image.where(public: true)).order(id: :desc)
     else
-      @images = Image.where(public: true)
+      @images = Image.where(public: true).order(id: :desc)
     end
 
 
