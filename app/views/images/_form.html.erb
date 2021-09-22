@@ -12,18 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :image_file %>
-    <%= form.file_field :image_file %>
+    <%= form.file_field :image_file, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control", placeholder: "description" %>
   </div>
 
   <div class="field">
-    <%= form.label :public %>
-    <%= form.check_box :public, value: false %>
+    <%= form.label "public?", class: "form-check-label" %>
+    <%= form.check_box :public, class: "form-check-input", value: false %>
   </div>
 
   <div class="field">
