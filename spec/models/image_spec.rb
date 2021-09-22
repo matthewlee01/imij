@@ -20,8 +20,6 @@ RSpec.describe Image, :type => :model do
 		it { should validate_presence_of(:user_id) }
 		it { should validate_presence_of(:image_file) }
 		it { should validate_inclusion_of(:public).in_array([true, false]) }
-
-		
 	end
 
 	describe "associations" do
@@ -33,5 +31,5 @@ RSpec.describe Image, :type => :model do
 			expect(subject.image_file).to be_attached
 		end
 	end
-	
+
 end

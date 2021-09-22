@@ -10,11 +10,15 @@
 </p>
 <p>
   <strong>uploaded by:</strong>
-  <%= @username %>
+    <%= @username %>
+    <% if @image.public == false %>
+      (private)
+    <% end %>
+
 </p>
 
 <% if @image.user == current_user %>
-  <%= link_to 'Edit', edit_image_path(@image) %> |
-  <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'edit', edit_image_path(@image) %> |
+  <%= link_to 'destroy', @image, method: :delete, data: { confirm: 'are you sure?' } %> |
 <% end %>
-<%= link_to 'Back', images_path %>
+<%= link_to 'back', images_path %>
