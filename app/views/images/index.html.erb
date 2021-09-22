@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>repository</h1>
-
 <div class="container-fluid">
-  <% @images.each do |image| %>
-    <%= link_to image do %>
-      <%= image_tag image.image_file.variant(resize_to_fill: [200, 200]), class: "img-thumbnail", style: "padding: 0.1rem" %>
-    <% end %>
-  <% end %>
+  <h1>repository</h1>
+  <%= link_to 'new image', new_image_path %>
 </div>
+
+</br>
+
+<%= render "images/thumbnails" %>
 
 <br>
 
-<%= link_to 'new image', new_image_path %>
+

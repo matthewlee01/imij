@@ -5,10 +5,12 @@ class ImagesController < ApplicationController
 
   # GET /images or /images.json
   def index
-    @images = Image.where(public: true)
     if (current_user)
-      @images = @images + Image.where(user_id: current_user.id)
+      @images = Image.where(user_id: current_user.id).or(Image.where(public: true))
+    else
+      @images = Image.where(public: true)
     end
+
 
   end
 
